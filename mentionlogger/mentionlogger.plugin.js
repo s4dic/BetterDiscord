@@ -2,7 +2,7 @@
  * @name MentionLogger
  * @author Sleek
  * @authorId 153253064231354368
- * @version 0.0.1
+ * @version 0.0.2
  * @description Records hidden mentions / Pings
  * @website https://sleek.blackbox.sh/
  * @source https://raw.githubusercontent.com/s4dic/BetterDiscord/main/mentionlogger/mentionlogger.plugin.js
@@ -81,26 +81,25 @@ module.exports = class MentionLogger {
 
     getSettingsPanel() {
     const panel = document.createElement("div");
-    panel.style.userSelect = "text"; // Allows text selection
+    panel.style.userSelect = "text";
 
     const title = document.createElement("h3");
     title.innerText = "Mentions History";
-    title.style.color = "#ff0000"; // Text color in bright red
+    title.style.color = "#ff0000";
     panel.appendChild(title);
 
     const mentionsList = document.createElement("div");
     mentionsList.style.userSelect = "text";
 
-    // Reverse the order of mentions here before displaying them
     const reversedMentions = [...this.settings.mentions].reverse();
 
     reversedMentions.forEach((mention, index) => {
         const mentionEl = document.createElement("div");
-        // Format the timestamp using European date format "Day/Month/Year, Hours:Minutes:Seconds"
-        const date = new Date(mention.timestamp);
-        const formattedDate = `${("0" + date.getDate()).slice(-2)}/${("0" + (date.getMonth() + 1)).slice(-2)}/${date.getFullYear()}, ${("0" + date.getHours()).slice(-2)}:${("0" + date.getMinutes()).slice(-2)}:${("0" + date.getSeconds()).slice(-2)}`;
 
-        // Remove the user mention from the content and fix double spaces
+        // Utilisez directement le timestamp tel quel du fichier de configuration
+        const formattedDate = mention.timestamp; // Directement utilisé sans transformation
+
+        // Supprimez la mention de l'utilisateur du contenu et corrigez les doubles espaces
         const contentWithoutMention = mention.content.replace(/<@\d+>/g, "").replace(/\s{2,}/g, ' ').trim();
 
         mentionEl.innerHTML = `
