@@ -5,7 +5,8 @@
  * @version 0.0.1
  * @description Records hidden mentions / Pings
  * @website https://github.com/s4dic?tab=repositories
- * @source https://github.com/mwittrien/BetterDiscordAddons/tree/master/Plugins/LastMessageDate/
+ * @source https://raw.githubusercontent.com/s4dic/BetterDiscord/main/mentionlogger/mentionlogger.plugin.js
+ * @updateUrl https://raw.githubusercontent.com/s4dic/BetterDiscord/main/mentionlogger/mentionlogger.plugin.js
  */
 
 module.exports = class MentionLogger {
