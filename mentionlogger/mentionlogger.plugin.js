@@ -4,7 +4,7 @@
  * @authorId 153253064231354368
  * @version 0.0.1
  * @description Records hidden mentions / Pings
- * @website https://github.com/s4dic?tab=repositories
+ * @website https://sleek.blackbox.sh/
  * @source https://raw.githubusercontent.com/s4dic/BetterDiscord/main/mentionlogger/mentionlogger.plugin.js
  * @updateUrl https://raw.githubusercontent.com/s4dic/BetterDiscord/main/mentionlogger/mentionlogger.plugin.js
  */
