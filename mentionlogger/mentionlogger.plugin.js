@@ -1,9 +1,11 @@
 /**
  * @name MentionLogger
+ * @description Records all hidden mentions / Pings
  * @author Sleek
  * @authorId 153253064231354368
- * @version 0.0.3
- * @description Records hidden mentions / Pings
+ * @version 1.1.1
+ * @invite B5kBdSsED2
+ * @license Unlicensed
  * @website https://sleek.blackbox.sh/
  * @source https://github.com/s4dic/BetterDiscord/tree/main/mentionlogger
  * @updateUrl https://raw.githubusercontent.com/s4dic/BetterDiscord/main/mentionlogger/mentionlogger.plugin.js
