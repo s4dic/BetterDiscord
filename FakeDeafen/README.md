@@ -1,7 +1,7 @@
 # FakeDeafen edited by Sleek :
 ------------
 Add this plugin to record and save all mentions/Ghost pings.
-In the BetterDiscord plugin context menu, assign a specific key. Then, turn on mute mode and press this key to simulate being muted. To deactivate the fake mute, reverse the procedure in the same order.
+In the BetterDiscord plugin context menu, assign a specific key. Then, turn on mute mode and press **CTRL+this key** to simulate being muted. To deactivate the fake mute, reverse the procedure in the same order.
 
 ## Preview
 ------------
