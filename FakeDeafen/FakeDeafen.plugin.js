@@ -109,7 +109,7 @@ module.exports = class FakeDeafen {
         const panel = document.createElement("div");
 
         const triggerKeySetting = document.createElement("div");
-        triggerKeySetting.innerHTML = `<label>Trigger Key: <input type="text" value="${this.mySettings.triggerKey}" /></label>`;
+        triggerKeySetting.innerHTML = `<label>Trigger Key (Use with CTRL): <input type="text" value="${this.mySettings.triggerKey}" /></label>`;
         triggerKeySetting.querySelector('input').onchange = (e) => {
             this.mySettings.triggerKey = e.target.value;
             BdApi.Data.save(this.meta.name, "settings", this.mySettings);
