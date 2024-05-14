@@ -2,7 +2,7 @@
  * @name FakeDeafen
  * @author Sleek
  * @description Lets you appear deafened while still being able to hear and talk
- * @version 0.1
+ * @version 0.2
  * @authorId 153253064231354368
  * @invite B5kBdSsED2
  * @license Unlicensed
@@ -14,7 +14,7 @@
 module.exports = class FakeDeafen {
     constructor(meta) {
         this.meta = meta;
-        this.mySettings = { shiftKeyRequired: false, triggerKey: "d" };
+        this.mySettings = { shiftKeyRequired: false, triggerKey: "" };
         this.isActive = false;
 
         this.myButton = document.createElement("button");
