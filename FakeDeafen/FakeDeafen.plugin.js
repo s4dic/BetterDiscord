@@ -2,7 +2,7 @@
  * @name FakeDeafen
  * @author Sleek
  * @description Lets you appear deafened while still being able to hear and talk
- * @version 0.2
+ * @version 0.3
  * @authorId 153253064231354368
  * @invite B5kBdSsED2
  * @license Unlicensed
@@ -39,6 +39,12 @@ module.exports = class FakeDeafen {
     }
 
     toggleDeafen() {
+        const SoundModule = BdApi.findModuleByProps('playSound', 'createSound');
+        const Sounds = {
+            ENABLE: 'ptt_start',
+            DISABLE: 'ptt_stop'
+        };
+
         if (!this.isActive) {
             WebSocket.prototype.send = function(data) {
                 const glob = new TextDecoder("utf-8");
@@ -49,11 +55,13 @@ module.exports = class FakeDeafen {
                 }
                 WebSocket.prototype.originalSend.apply(this, [data]);
             };
-            window.BdApi.alert("Fake Deafen Activated", "You appear deafened.");
+            BdApi.UI.showToast("Fake Deafen Activated", {type: "success"});
+            SoundModule.playSound(Sounds.ENABLE, .4);
             this.isActive = true;
         } else {
             WebSocket.prototype.send = WebSocket.prototype.originalSend;
-            window.BdApi.alert("Fake Deafen Deactivated", "You no longer appear deafened.");
+            BdApi.UI.showToast("Fake Deafen Deactivated", {type: "warning"});
+            SoundModule.playSound(Sounds.DISABLE, .4);
             this.isActive = false;
         }
     }
