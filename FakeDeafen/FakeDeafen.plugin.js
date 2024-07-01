@@ -2,7 +2,7 @@
  * @name FakeDeafen
  * @description Lets you appear deafened while still being able to hear and talk
  * @version 0.4
- * @autor Sleek
+ * @author Sleek
  * @authorId 153253064231354368
  * @invite B5kBdSsED2
  * @license Unlicensed
