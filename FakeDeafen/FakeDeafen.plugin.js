@@ -1,8 +1,8 @@
 /**
  * @name FakeDeafen
- * @author Sleek
  * @description Lets you appear deafened while still being able to hear and talk
- * @version 0.3
+ * @version 0.4
+ * @autor Sleek
  * @authorId 153253064231354368
  * @invite B5kBdSsED2
  * @license Unlicensed
@@ -14,7 +14,7 @@
 module.exports = class FakeDeafen {
     constructor(meta) {
         this.meta = meta;
-        this.mySettings = { shiftKeyRequired: false, triggerKey: "" };
+        this.mySettings = { shiftKeyRequired: false, triggerKey: "d" };
         this.isActive = false;
 
         this.myButton = document.createElement("button");
@@ -39,12 +39,6 @@ module.exports = class FakeDeafen {
     }
 
     toggleDeafen() {
-        const SoundModule = BdApi.findModuleByProps('playSound', 'createSound');
-        const Sounds = {
-            ENABLE: 'ptt_start',
-            DISABLE: 'ptt_stop'
-        };
-
         if (!this.isActive) {
             WebSocket.prototype.send = function(data) {
                 const glob = new TextDecoder("utf-8");
@@ -56,12 +50,12 @@ module.exports = class FakeDeafen {
                 WebSocket.prototype.originalSend.apply(this, [data]);
             };
             BdApi.UI.showToast("Fake Deafen Activated", {type: "success"});
-            SoundModule.playSound(Sounds.ENABLE, .4);
+            BdApi.showToast("Fake Deafen Activated", {type: "success"});
             this.isActive = true;
         } else {
             WebSocket.prototype.send = WebSocket.prototype.originalSend;
             BdApi.UI.showToast("Fake Deafen Deactivated", {type: "warning"});
-            SoundModule.playSound(Sounds.DISABLE, .4);
+            BdApi.showToast("Fake Deafen Deactivated", {type: "warning"});
             this.isActive = false;
         }
     }
@@ -117,7 +111,7 @@ module.exports = class FakeDeafen {
         const panel = document.createElement("div");
 
         const triggerKeySetting = document.createElement("div");
-        triggerKeySetting.innerHTML = `<label>Trigger Key (Use with CTRL): <input type="text" value="${this.mySettings.triggerKey}" /></label>`;
+        triggerKeySetting.innerHTML = `<label>Trigger Key: <input type="text" value="${this.mySettings.triggerKey}" /></label>`;
         triggerKeySetting.querySelector('input').onchange = (e) => {
             this.mySettings.triggerKey = e.target.value;
             BdApi.Data.save(this.meta.name, "settings", this.mySettings);
