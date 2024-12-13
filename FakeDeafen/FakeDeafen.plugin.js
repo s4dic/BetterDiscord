@@ -1,7 +1,7 @@
 /**
  * @name FakeDeafen
  * @description Lets you appear deafened while still being able to hear and talk
- * @version 0.4
+ * @version 0.5
  * @author Sleek
  * @authorId 153253064231354368
  * @invite B5kBdSsED2
@@ -64,34 +64,6 @@ module.exports = class FakeDeafen {
         // Load settings
         Object.assign(this.mySettings, BdApi.Data.load(this.meta.name, "settings"));
         document.addEventListener("keydown", this.handleKeyDown.bind(this));
-
-        // Check if required library is downloaded and prompt the user to download it if it isn't
-        if (!global.ZeresPluginLibrary) {
-            BdApi.UI.showConfirmationModal(
-                "Library Missing",
-                `The library plugin needed for ${this.meta.name} is missing. Please click Download Now to install it.`,
-                {
-                    confirmText: "Download Now",
-                    cancelText: "Cancel",
-                    onConfirm: () => {
-                        require("request").get(
-                            "https://rauenzi.github.io/BDPluginLibrary/release/0PluginLibrary.plugin.js",
-                            async (error, response, body) => {
-                                if (error)
-                                    return require("electron").shell.openExternal("https://betterdiscord.app/Download?id=9");
-                                await new Promise((r) =>
-                                    require("fs").writeFile(
-                                        require("path").join(BdApi.Plugins.folder, "0PluginLibrary.plugin.js"),
-                                        body,
-                                        r
-                                    )
-                                );
-                            }
-                        );
-                    },
-                }
-            );
-        }
     }
 
     handleKeyDown(event) {
